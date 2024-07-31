@@ -1,4 +1,4 @@
-import kue from 'kue';
+// 8-job.js
 
 function createPushNotificationsJobs(jobs, queue) {
   if (!Array.isArray(jobs)) {
@@ -6,7 +6,9 @@ function createPushNotificationsJobs(jobs, queue) {
   }
 
   jobs.forEach((jobInfo) => {
-    const job = queue.create('push_notification_code_3', jobInfo)
+    const job = queue.create('push_notification_code_3', jobInfo);
+
+    job
       .save((err) => {
         if (!err) {
           console.log(`Notification job created: ${job.id}`);
